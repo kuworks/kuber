@@ -1,4 +1,5 @@
-$(document).ready(function(){
+setInterval(function(){
+    $("#ion-loader").fadeOut();
     $("#home-footer button").click(function(){
         $("#home-footer .yellocoin").removeClass("ani-clink");
         var index = $(this).attr("tab-number");
@@ -9,4 +10,5 @@ $(document).ready(function(){
             },100)
         }
     })
-})
+},3000)
+
