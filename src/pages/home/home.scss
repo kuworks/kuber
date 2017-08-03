@@ -9,9 +9,6 @@
 }
 
 page-home {
-    ion-header#home-header{
-        display: none;
-    }
     ion-content{
         ion-tabs#home-tabs{
             .tabbar{
@@ -22,6 +19,7 @@ page-home {
     &>ion-footer{
         height: 50px;
         text-align: center;
+        box-shadow: 0px -1px 16px black;
         .yellocoin{
             &.ani-clink{
                 animation-name: clink;
@@ -44,28 +42,26 @@ page-home {
         .yellobar{
             transition: 0.5s;
             position: absolute;
-            height: 6px; width: 34%;
-            border-radius: 3px;
-            background-color: #303134;
+            height: 3px; width: 34%;
+            background-color: #DED301;
             display: inline-block;
             top: 0px;
             left:33%;          
         }
         button{
-            font-family: 'Nanum Gothic';
-            font-weight: 700;
             line-height: 50px;
-            font-size: 16px;
+            font-size: 12px; font-weight: 900;
             width: 25%;
             margin: 0% 3% 0% 3%;
+            padding-top: 10px;
             background-color: rgba(0,0,0,0);
-            &:nth-child(3n+1){
+            &[tab-number="0"]{
                 color: #00C1F9;
             }
-            &:nth-child(3n+2){
+            &[tab-number="1"]{
                 color: #D9465A;
             }
-            &:nth-child(3n+3){
+            &[tab-number="2"]{
                 color: #7ED221;
             }
         }
@@ -74,6 +70,11 @@ page-home {
         position: absolute;
         background-color: #303134;
         height: 100%; width: 100%;
-        z-index: 1000;
+        z-index: 100;
+        img{
+            position: absolute;
+            top: 40%; left: calc(50% - 50px);
+            width: 100px;
+        }
     }
 }

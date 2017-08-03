@@ -16,9 +16,17 @@
 // automatically applied to the <body> element in the app.
 @import url('https://fonts.googleapis.com/css?family=Dosis');
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+
 ion-nav{
-    font-family: 'Dosis';
-}
-.fixed-content{
-    background-color: #F7F8F7;
+    font-family: 'Dosis', 'Nanum Gothic';
+    ion-header{
+        display: none;
+    }
+    ion-content{
+        .fixed-content{
+            background-color: #797D83;
+        }
+    }
+
 }
