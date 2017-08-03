@@ -1,3 +1,24 @@
 page-home {
-
+    ion-header#home-header{
+        display: none;
+    }
+    ion-content{
+        ion-tabs#home-tabs{
+            .tabbar{
+                display: none;
+            }
+        }
+    }
+    ion-footer{
+        height: 50px;
+        text-align: center;
+        div{
+            display: inline-block;
+            line-height: 50px;
+            color: #D9465A;
+            font-size: 20px;
+            width: 25%;
+            margin: 0% 3% 0% 3%;
+        }
+    }
 }
