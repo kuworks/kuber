@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content id="home-content" padding>
   <ion-tabs #homeTabs id="home-tabs" selectedIndex="1">
     <ion-tab [root]="tab1Root"></ion-tab>
     <ion-tab [root]="tab2Root"></ion-tab>
@@ -21,8 +21,10 @@
   </ion-tabs>
 </ion-content>
 
-<ion-footer>
-  <div (click)="tab_click(0)">Chat</div>
-  <div (click)="tab_click(1)">Market</div>
-  <div (click)="tab_click(2)">Profile</div>
+<ion-footer id="home-footer">
+  <div class="yellobar"></div>
+  <div class="yellocoin"><div>￦</div></div>
+  <button tab-number=0 (click)="tab_click(0)">채팅</button>
+  <button tab-number=1 (click)="tab_click(1)">마켓</button>
+  <button tab-number=2 (click)="tab_click(2)">프로필</button>
 </ion-footer>

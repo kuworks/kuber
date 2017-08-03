@@ -15,6 +15,10 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 @import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 ion-nav{
     font-family: 'Dosis';
+}
+.fixed-content{
+    background-color: #F7F8F7;
 }

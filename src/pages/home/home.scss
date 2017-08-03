@@ -1,3 +1,13 @@
+@keyframes clink {
+    from {
+        opacity: 1;
+        top: 0px;
+    } to {
+        opacity: 0;
+        top: -150px;
+    }
+}
+
 page-home {
     ion-header#home-header{
         display: none;
@@ -9,16 +19,55 @@ page-home {
             }
         }
     }
-    ion-footer{
+    &>ion-footer{
         height: 50px;
         text-align: center;
-        div{
+        .yellocoin{
+            &.ani-clink{
+                animation-name: clink;
+                animation-duration: 1.4s;
+            }
+            position: absolute;
+            width: 22px; height: 22px;
+            background-color: #DED301;
+            border-radius: 11px;
+            left: calc(50% - 11px);
+            opacity: 0;
+            div{
+                color: #DED301;
+                width: 16px; height: 16px;
+                border-radius: 8px;
+                margin: 3px 0px 0px 3px;
+                background-color: #FFF000;
+            }
+        }
+        .yellobar{
+            transition: 0.5s;
+            position: absolute;
+            height: 6px; width: 34%;
+            border-radius: 3px;
+            background-color: #303134;
             display: inline-block;
+            top: 0px;
+            left:33%;          
+        }
+        button{
+            font-family: 'Nanum Gothic';
+            font-weight: 700;
             line-height: 50px;
-            color: #D9465A;
-            font-size: 20px;
+            font-size: 16px;
             width: 25%;
             margin: 0% 3% 0% 3%;
+            background-color: rgba(0,0,0,0);
+            &:nth-child(3n+1){
+                color: #00C1F9;
+            }
+            &:nth-child(3n+2){
+                color: #D9465A;
+            }
+            &:nth-child(3n+3){
+                color: #7ED221;
+            }
         }
     }
 }
