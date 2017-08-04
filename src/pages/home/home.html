@@ -5,36 +5,33 @@
   Ionic pages and navigation.
 -->
 
-<ion-header id="home-header">
-
+<ion-header id="home-ion-header">
   <ion-navbar>
     <ion-title>home</ion-title>
   </ion-navbar>
 
+  <div id="home-navbar">
+    <div class="content">
+      <img class="status" src="/assets/icon/status.svg">
+      <div class="toggle-box">
+        <div class="toggle-button"></div>
+        <img class="market" src="/assets/icon/market.svg">
+        <img class="headhunt" src="/assets/icon/headhunt.svg">   
+      </div>
+      <img class="chat" src="/assets/icon/chat.svg">
+    </div>
+    <div class="toast"></div>
+  </div>
 </ion-header>
 
 <ion-content id="home-content" padding>
-  <ion-tabs #homeTabs id="home-tabs" selectedIndex="1">
+  <ion-tabs>
     <ion-tab [root]="tab1Root"></ion-tab>
-    <ion-tab [root]="tab2Root"></ion-tab>
-    <ion-tab [root]="tab3Root"></ion-tab>
-  </ion-tabs>  
+  </ion-tabs>
 </ion-content>
 
-<ion-footer id="home-footer">
-  <div class="yellobar"></div>
-  <div class="yellocoin"><div>￦</div></div>
-  <button tab-number=0 (click)="tab_click(0)">
-    <img src="assets/icon/chat.svg" width=30 height=30>
-    협상 
-  </button>
-  <button tab-number=1 (click)="tab_click(1)">
-    <img src="assets/icon/deal.png" width=30 height=30>
-    거래
-  </button>
-  <button tab-number=2 (click)="tab_click(2)">
-    <img src="assets/icon/profile.svg" width=30 height=30>
-    정보
-  </button>
-</ion-footer>
-
+<div id="kuber-loader">
+  <img class="l" src="/assets/icon/l.svg">
+  <img class="g" src="/assets/icon/g.svg">
+  <img class="o" src="/assets/icon/o.svg">
+</div>

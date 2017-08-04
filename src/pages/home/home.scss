@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@import url('http://fonts.googleapis.com/css?family=Noto+Sans');
+
+ion-nav{
+    font-family: 'Dosis', 'Nanum Gothic';
+}
+
+page-home {
+    #home-ion-header{
+        display: block;
+        ion-navbar{
+            display: none;
+        }
+        #home-navbar{
+            padding-top: 14px;
+            height: 56px;
+            border-bottom: 1px solid #F3F4F3;
+            .content{
+                .status, .market, .headhunt, .chat, .toggle-box, .toggle-button{
+                    position: absolute;
+                }
+                .status{
+                    left: 10px;
+                    height: 28px; width: 28px;
+                }
+                .toggle-box{
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100px; height: 28px;
+                    border: 1.5px solid #F3F4F3;
+                    border-radius: 14px;
+                    padding-top: 2px;
+                    .market{
+                        left: 15px;
+                        height: 20px; width: 20px;
+                    }
+                    .headhunt{
+                        right: 15px;
+                        height: 20px; width: 20px;                        
+                    }
+                    .toggle-button{
+                        transition: 0.25s;
+                        width: 54px; height: 28px;
+                        border-radius: 14px;
+                        margin: -3.5px 0px 0px -1.5px;
+                        background-color: black;
+                        background: linear-gradient(to right, #FE626C, #D9455A);
+                        left: 0px;
+                    }
+                }
+                .chat{
+                    right: 10px;
+                    height: 28px; width: 28px;
+                }
+
+            }
+            .toast{
+                display: none;
+                position: absolute;
+                left: calc(50% - 50px); top: 50px;
+                width: 100px; height: 50px;
+                border-radius: 10px;
+                background-color: rgba(254,98,108,0.8);
+                color: white;
+                text-align: center;
+                padding: 15px;
+                font-weight: 900;
+            }
+        }
+    }
+    #home-ion-content{
+        &>div>ion-tabs>div:nth-child(1){
+            display: none;
+        }
+    }
+
+    #kuber-loader{
+        height: 100%;
+        width: 100%;
+        background-color: #303134;
+        z-index: 10;
+        position: absolute;
+        .l, .g, .o{
+            position: absolute;;
+            width: 91px;
+        }
+        .l{
+            left: 93px;
+            top: 19px;
+        }
+        .g{
+            top: -2px;
+            left: 122px;
+            animation: loading1;
+            animation-duration: 2.5s;            
+        }
+        .o{
+            opacity: 0;
+            left: 93px;
+            top: 19px;
+            animation: loading2;
+            animation-duration: 2.5s;                        
+        }
+    }
+}
+
+@keyframes loading1{
+    0% {
+        left: 93px;
+        top: 19px;
+    } 90% {
+        left: 93px;
+        top: 19px;
+    } 100% {
+        top: -2px;
+        left: 122px;
+    }
+}
+@keyframes loading2{
+    0% {
+        opacity: 1;
+    } 75% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}

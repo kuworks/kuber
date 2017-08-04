@@ -15,21 +15,11 @@ import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
 })
 export class HomePage {
 
-  tab1Root='StatusPage';
-  tab2Root='MarketPage';
-  tab3Root='ChatPage';
-
+  tab1Root = 'MarketPage';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
-
-  @ViewChild('homeTabs') tabRef: Tabs;
-
-  tab_click(tab_number: number){
-    this.tabRef.select(tab_number);
-  }
-
 }

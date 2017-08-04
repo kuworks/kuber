@@ -1,9 +1,12 @@
 page-market {
+    ion-header{
+        display: none;
+    }
 
-#map {
-    position:relative;
-}
 
+    #map {
+        position:relative;
+    }
     .centerMarker{
     position:absolute;
     /*url of the marker*/
@@ -42,4 +45,6 @@ page-market {
        .controls:focus {
         border-color: #4d90fe;
       }
+
+    
 }
