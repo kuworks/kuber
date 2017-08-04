@@ -1,3 +1,4 @@
+import { FIREBASE_CONFIG } from './app.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -6,13 +7,22 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 
+import {HttpModule} from '@angular/http';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireModule} from 'angularfire2';
+import { FirebaseProvider } from '../providers/firebase/firebase';
+
+
 @NgModule({
   declarations: [
     MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -21,7 +31,8 @@ import { MyApp } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider
   ]
 })
 export class AppModule {}

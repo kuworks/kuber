@@ -1,3 +1,4 @@
+import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { StatusPage } from './../status/status';
 import { Order } from './../../models/order';
 import { Location } from './../../models/Location';
@@ -19,9 +20,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ConfirmOrderPage {
 
   order:Order = new Order;
+  key:string
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  private firebase: FirebaseProvider) {
     this.order = this.navParams.get('order');
+    this.key = this.navParams.get('key');
   }
 
   ionViewDidLoad() {
@@ -31,5 +35,14 @@ export class ConfirmOrderPage {
   navigateToStatusPage(){
     this.navCtrl.setRoot('StatusPage');
   }
+  
+  cancelOrder(){
+    this.firebase.removeOrder(this.key);
+    this.navCtrl.setRoot('StatusPage', {toast: 1});
+  }
+
+
+
+
 
 }
