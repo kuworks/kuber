@@ -2,49 +2,232 @@ page-market {
     ion-header{
         display: none;
     }
-
-
-    #map {
-        position:relative;
+    #market-ion-content{
+        .scroll-content{
+            padding: 20px;            
+            &>.title{
+                font-size: 24px;
+                font-weight: 800;
+                color: #ff636c;
+            }
+            &>.sub-title{
+                color: #c7c6c5;
+                font-family: NotoSansCJKkr;
+                font-size: 12px;
+                span{
+                    color: #ff636c;
+                }
+            }
+            &>.bid-box{
+                height: calc(67% - 90px);
+                margin: 0px -20px 0px -20px;
+                overflow: hidden;
+                position: relative;
+                .title{
+                    margin: 0px 0px 15px 20px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    color: #ff4e75;
+                }
+                .list{
+                    &:nth-child(2n+1){
+                        div{
+                            background-color: #00D3DA;
+                        }
+                        img{
+                            border: 2px solid #00D3DA;
+                        }
+                    }
+                    &:nth-child(2n){
+                        div{
+                            background-color: #e05bdc;
+                        }
+                        img{
+                            border: 2px solid #e05bdc;
+                        }
+                    }
+                    background-color: #F3F4F3;
+                    height: 80px;
+                    position: relative;
+                    div, img, h1{
+                        position: absolute;
+                    }
+                    div, img{
+                        top: 25px;
+                        transform: translateY(-50%);
+                    }
+                    div{
+                        width: 8px; height: 9px;
+                        border-radius: 4px;
+                        left: 8px;
+                    }
+                    img{
+                        width: 24px; height: 27px;
+                        border-radius: 12px;                        
+                        left: 20px;
+                    } 
+                    h1{
+                        &:nth-child(3), &:nth-child(4){
+                            margin: 0px;
+                            top: 20px;
+                            transform: translateY(-50%);
+                            font-family: 'Noto Sans';
+                        }
+                        &:nth-child(3){
+                            left: 50px;
+                            font-size: 12px;
+                            font-weight: 900;
+                            color: #322723;
+                        }
+                        &:nth-child(4){
+                            padding: 2px 5px 2px 5px;
+                            height: 20px;
+                            border-radius: 11px;
+                            border: solid 1px #c7c6c6;
+                            right: 20px;
+                            font-size: 12px;
+                            font-weight: 900;
+                            color: #c7c6c5;
+                        }
+                        &:nth-child(5){
+                            margin: 0px;
+                            padding-right: 25px;
+                            left: 50px; top: 33px;
+                            font-family: 'Noto Sans';
+                            font-size: 13px;
+                            font-weight: 400;
+                            color: #322723;
+                            line-height: 21px;
+                        }
+                    }
+                }
+                .blur{
+                    height: 50%; width: 100%;
+                    position: absolute;
+                    background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,1));
+                    bottom: 0px;
+                    div{
+                        text-align: center;
+                        padding-top: 4px;
+                        color: white;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        font-family: 'Noto Snas';
+                        font-size: 14px;
+                        display: inline-block;
+                        position: absolute;
+                        width: 82px;
+                        height: 24px;
+                        border-radius: 12px;
+                        background-color: rgba(154, 164, 154, 0.8);
+                        bottom: 15px;
+                    }
+                }
+            }
+            &>.order-box{
+                position: relative;
+                margin-top: 20px;
+                height: 33%;
+                .list{
+                    width: 45%; height: 100%;
+                    background-size: 100% 110%;
+                    position: absolute;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    &:nth-child(1){
+                        left:0px;
+                        background-image: url('/assets/icon/model1.png');
+                        .content{
+                            background-color: rgba(0, 211, 218, 0.85);
+                        }                    
+                    }
+                    &:nth-child(2){
+                        right: 0px;
+                        background-image: url('/assets/icon/model2.png');
+                        .content{
+                            background-color: rgba(224, 91, 220, 0.85);
+                        }
+                    }
+                    .content{
+                        width: 100%; height: 100%;
+                        text-align: center;
+                        .check{
+                            transition: 0.5s;
+                            opacity: 0;
+                            width: 50px;
+                        }
+                        .title{
+                            font-family: 'Noto Sans';
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: white;
+                            margin-top: -20px;
+                        }
+                        .number{
+                            font-size: 40px;
+                            font-weight: bold;
+                            color: white;
+                            margin-top: -10px;
+                            span{
+                                font-size: 16px;
+                                font-weight: bold;
+                            }
+                        }
+                        .word{
+                            margin-top: -5px;
+                            font-family: 'Noto Sans';
+                            font-size: 12px;
+                            color: rgba(255, 255, 255, 0.6);
+                        }
+                    }
+                }
+            }
+        }
     }
-    .centerMarker{
-    position:absolute;
-    /*url of the marker*/
-    background:url(http://maps.gstatic.com/mapfiles/markers2/marker.png) no-repeat;
-    /*center the marker*/
-    top:35%;left:50%;
 
-    z-index:1;
-    /*fix offset when needed*/
-    margin-left:-10px;
-    margin-top:-34px;
-    /*size of the image*/
-    height:34px;
-    width:20px;
 
-    cursor:pointer;
-    }
 
-    .controls {
-        background-color: #fff;
-        border-radius: 2px;
-        border: 1px solid transparent;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        box-sizing: border-box;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        height: 29px;
-        margin-left: 17px;
-        margin-top: 10px;
-        outline: none;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-       .controls:focus {
-        border-color: #4d90fe;
-      }
+    // #map {
+    //     position:relative;
+    // }
+    // .centerMarker{
+    // position:absolute;
+    // /*url of the marker*/
+    // background:url(http://maps.gstatic.com/mapfiles/markers2/marker.png) no-repeat;
+    // /*center the marker*/
+    // top:35%;left:50%;
+
+    // z-index:1;
+    // /*fix offset when needed*/
+    // margin-left:-10px;
+    // margin-top:-34px;
+    // /*size of the image*/
+    // height:34px;
+    // width:20px;
+
+    // cursor:pointer;
+    // }
+
+    // .controls {
+    //     background-color: #fff;
+    //     border-radius: 2px;
+    //     border: 1px solid transparent;
+    //     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    //     box-sizing: border-box;
+    //     font-family: Roboto;
+    //     font-size: 15px;
+    //     font-weight: 300;
+    //     height: 29px;
+    //     margin-left: 17px;
+    //     margin-top: 10px;
+    //     outline: none;
+    //     padding: 0 11px 0 13px;
+    //     text-overflow: ellipsis;
+    //     width: 400px;
+    //   }
+    //    .controls:focus {
+    //     border-color: #4d90fe;
+    //   }
 
     
 }

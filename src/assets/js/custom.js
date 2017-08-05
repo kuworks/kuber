@@ -24,4 +24,12 @@ setTimeout(function(){
         }
     });
 
+    $("#market-ion-content .order-box .list").click(function(){
+        var check = $(this).find(".check")
+        check.css("opacity", 1);
+        setTimeout(function(){
+            check.css("opacity", 0);
+        }, 1000);
+    });
+
 }, 2000)

@@ -13,8 +13,67 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content id="market-ion-content">
+  <h1 class="title">market.</h1>
+  <h1 class="sub-title">총 <span>5055건</span>의 거래가 성사되었습니다.</h1>   
 
+  <div class="bid-box">
+    <h1 class="title">Current Price</h1>
+    <div class="list">
+      <div></div><img src="/assets/icon/model1.png">
+      <h1>안암동 5가 10-3번지</h1>
+      <h1>3000 ￦</h1> 
+      <h1>고른햇살 참치김밥 라볶기 포장해서 가져다 주세요 계산은 카드로 할게요 계좌번호 알려주세요</h1>  
+    </div>
+    <div class="list">
+      <div></div><img src="/assets/icon/model2.png">
+      <h1>고려대 하나과학관 2층</h1>
+      <h1>6000 ￦</h1> 
+      <h1>도스마스 10개 돼지 3 소 7</h1>  
+    </div>
+    <div class="list">
+      <div></div><img src="/assets/icon/model1.png">
+      <h1>고려대학교 법학도서관</h1>
+      <h1>2000 ￦</h1> 
+      <h1>카페C 아이스아메리카노 스페셜 블랜딩 한잔, 메가커피 아이스아메리카노요!</h1>  
+    </div>
+    <div class="list">
+      <div></div><img src="/assets/icon/model2.png">
+      <h1>안암동 5가 10-3번지</h1>
+      <h1>3000 ￦</h1> 
+      <h1>고른햇살 참치김밥 라볶기 포장해서 가져다 주세요 계산은 카드로 할게요 계좌번호 알려주세요</h1>  
+    </div>
+    <div class="list">
+      <div></div><img src="/assets/icon/model1.png">
+      <h1>안암동 5가 10-3번지</h1>
+      <h1>3000 ￦</h1> 
+      <h1>고른햇살 참치김밥 라볶기 포장해서 가져다 주세요 계산은 카드로 할게요 계좌번호 알려주세요</h1>  
+    </div>
+    <div class="blur">
+      <div>더 보기</div>
+    </div>
+  </div>
+
+  <div class="order-box">
+    <div class="list">
+      <div class="content">
+        <img class="check" src="/assets/icon/check.svg">
+        <h1 class="title">부탁하기</h1>
+        <h1 class="number">72<span> %</span></h1>
+        <h1 class="word">성공률</h1>
+      </div>
+    </div>
+    <div class="list">
+      <div class="content">
+        <img class="check" src="/assets/icon/check.svg">
+        <h1 class="title">들어주기</h1>
+        <h1 class="number">41<span> %</span></h1>
+        <h1 class="word">성공률</h1>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <input id="pac-input" class="controls" type="text"
         placeholder="Enter a location">
   <div id="map" style="width:100%;height:400px;" ng-bind-html="centerMarker"></div>

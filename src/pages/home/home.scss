@@ -15,7 +15,7 @@ page-home {
         #home-navbar{
             padding-top: 14px;
             height: 56px;
-            border-bottom: 1px solid #F3F4F3;
+            border-bottom: 1px solid rgba(218, 217, 215, 0.7);
             .content{
                 .status, .market, .headhunt, .chat, .toggle-box, .toggle-button{
                     position: absolute;
@@ -28,7 +28,7 @@ page-home {
                     left: 50%;
                     transform: translateX(-50%);
                     width: 100px; height: 28px;
-                    border: 1.5px solid #F3F4F3;
+                    border: 1.5px solid rgba(218, 217, 215, 0.7);
                     border-radius: 14px;
                     padding-top: 2px;
                     .market{
