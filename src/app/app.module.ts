@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { FIREBASE_CONFIG } from './app.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import {HttpModule} from '@angular/http';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule} from 'angularfire2';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseProvider
+    FirebaseProvider,
+    AuthProvider,
+    AngularFireAuth
   ]
 })
 export class AppModule {}

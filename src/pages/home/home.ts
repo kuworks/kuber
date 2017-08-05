@@ -1,3 +1,5 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthProvider } from './../../providers/auth/auth';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
 
@@ -16,10 +18,23 @@ import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
 export class HomePage {
 
   tab1Root = 'MarketPage';
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+  }
+
+  navigateTo(page:string){
+    this.auth.authState.subscribe( res => {
+    if (res && res.uid) {
+      console.log(res);
+        console.log('user is logged in');
+        this.navCtrl.push('page');
+      } else {
+        console.log('user not logged in');
+        this.navCtrl.push('LoginPage');
+      }
+    });
   }
 }

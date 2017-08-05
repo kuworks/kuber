@@ -12,13 +12,13 @@
 
   <div id="home-navbar">
     <div class="content">
-      <img class="status" src="/assets/icon/status.svg">
+      <img class="status" src="/assets/icon/status.svg" (click)="navigateTo('StatusPage')">
       <div class="toggle-box">
         <div class="toggle-button"></div>
         <img class="market" src="/assets/icon/market.svg">
         <img class="headhunt" src="/assets/icon/headhunt.svg">   
       </div>
-      <img class="chat" src="/assets/icon/chat.svg">
+      <img class="chat" src="/assets/icon/chat.svg" (click)= "navigateTo('LoginPage')">
     </div>
     <div class="toast"></div>
   </div>

@@ -14,9 +14,28 @@
 
 
 <ion-content padding>
+  <h3>입찰 현황!!</h3>
+  <ion-list>
+    <ion-item-sliding *ngFor="let order of orderList | async">
+      <ion-item item-left>
+        <h3>{{order.name}}</h3>
+        <h3>{{ order.content | json }}</h3>
+        <p>{{ order.location.address | json}}</p>
+        <ion-item>
+        <ion-input type="number" placeholder="price" min=1000 step=500></ion-input>
+        </ion-item>
+
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" icon-only (click)="removeOrder(order.$key)"><ion-icon name="trash"></ion-icon></button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
 
   <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location">
+        placeholder="검색은 구글에서..">
   <div id="map" style="width:100%;height:400px;" ng-bind-html="centerMarker"></div>
   <div class="centerMarker"></div>
   <div id="infowindow-content">

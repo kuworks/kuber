@@ -1,3 +1,4 @@
+import { AuthProvider } from './../../providers/auth/auth';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Order } from './../../models/order';
 import { FirebaseListObservable } from 'angularfire2/database';
@@ -20,22 +21,17 @@ export class StatusPage {
 
   orderList: FirebaseListObservable<Order[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  private firebase: FirebaseProvider, private toast: ToastController) {
-    this.orderList = this.firebase.getOrderList();
-    if (this.navParams.get('toast') === 1){
-      this.toast.create({
-        message: "주문을 취소하셧습니다",
-        duration: 1000
-      }).present();
-    }
+  private firebase: FirebaseProvider, private toast: ToastController, private auth: AuthProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StatusPage');
   }
 
-  removeOrder(key: string){
-    this.firebase.removeOrder(key);
+  logout(){
+    this.auth.signOut();
+    this.navCtrl.pop();
   }
+
 
 }

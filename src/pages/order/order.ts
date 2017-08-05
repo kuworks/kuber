@@ -1,3 +1,4 @@
+import { Profile } from './../../models/profile';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { Order } from './../../models/order';
@@ -28,11 +29,23 @@ export class OrderPage {
   // orderList: FirebaseListObservable<Order[]>;
 
   order: Order = new Order;
+  selectedProfile: Profile;
+
+  userProfile: Profile;
+
+  userId: string
 
   constructor(public navCtrl: NavController,
    public navParams: NavParams,
    private firebaseProvider: FirebaseProvider) {
      this.order.location = this.navParams.get('location');
+     this.selectedProfile = this.navParams.get('profile');
+    this.firebaseProvider.getAuthenticatedUserProfile()
+    .subscribe(profile=> {
+      console.log(profile);
+      this.userProfile = profile,
+      this.userId = profile.$key
+    });
     //  this.orderList = this.firebaseProvider.getOrderList();
   }
 
@@ -42,7 +55,8 @@ export class OrderPage {
 
   submitOrder(){
     console.log(this.order.content);
-
+    this.order.name = this.userProfile.name;
+    this.order.uid = this.userId;
     this.key = this.firebaseProvider.addOrder(this.order);    
     this.navCtrl.setRoot('ConfirmOrderPage', {
       order: this.order,

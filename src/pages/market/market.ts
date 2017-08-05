@@ -1,6 +1,11 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Order } from './../../models/order';
+import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { FirebaseListObservable } from 'angularfire2/database';
+import { LoginPage } from './../login/login';
 import { Location } from './../../models/Location';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import * as $ from 'jquery'
 
 declare var google:any
@@ -12,8 +17,20 @@ declare var google:any
 })
 export class MarketPage {
 
+  orderList: FirebaseListObservable<Order[]>;
   location: Location = new Location;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebase: FirebaseProvider, private toast: ToastController, private auth: AngularFireAuth) {
+    this.orderList = this.firebase.getOrderList();
+    if (this.navParams.get('toast') === 1){
+      this.toast.create({
+        message: "주문을 취소하셧습니다",
+        duration: 1000
+      }).present();
+    }
+  }
+
+  removeOrder(key: string){
+    this.firebase.removeOrder(key);
   }
 
   ionViewDidLoad() {
@@ -24,14 +41,27 @@ export class MarketPage {
   }
 
   navigateToOrderPage(){
-    this.location.name = $('#location').html();
+    this.auth.authState.subscribe( res => {
+    if (res && res.uid) {
+      console.log(res);
+        console.log('user is logged in');
+        this.location.name = $('#location').html();
     this.location.address = $('#address').html();
     this.location.lat = $('#lat').html();
     this.location.lng = $('#lng').html();
-
     console.log(this.location);
     this.navCtrl.push('OrderPage',
      {location: this.location});
+      } else {
+        console.log('user not logged in');
+        this.navCtrl.push('LoginPage');
+      }
+    });
+    
+  }
+
+  naverLogin(){
+    this.navCtrl.push('LoginPage');
   }
 
   initMap(){
@@ -68,12 +98,9 @@ export class MarketPage {
             map.setZoom(18);
           }
 
-
             this.place = place.name;
             console.log(this.place);
             $('#location').text(this.place);
-
-
 
           document.getElementById('place-name').textContent = place.name;
           document.getElementById('place-id').textContent = place.place_id;
@@ -86,7 +113,6 @@ export class MarketPage {
       });
 
       map.addListener('center_changed', function(e) {
-
        
         location = map.getCenter();
         $('#lat').text(location.lat);
