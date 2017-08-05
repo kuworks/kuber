@@ -1,5 +1,5 @@
 import { AuthProvider } from './../auth/auth';
-import { Order } from './../../models/order';
+import { Order, Bid } from './../../models/order';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -37,6 +37,34 @@ export class FirebaseProvider {
 
   removeOrder($key){
     this.afd.list('/orders/').remove($key);
+  }
+
+  addBid(orderKey, bid:Bid){
+    
+    console.log(this.afd.list(`/orders/${orderKey}/bids/`));
+    const query = this.afd.list(`/orders/${orderKey}/bids`, {
+      query: {
+        orderByChild: 'uid',
+        equalTo: bid.uid
+      }
+    })
+
+    console.log(query);
+
+    query.take(1).subscribe(emptyBid => {
+      console.log(emptyBid);
+      if (emptyBid.length == 0){
+        this.afd.list(`/orders/${orderKey}/bids/`).push(bid)
+        console.log('bid');
+      }
+      else {
+         console.log('already bid');
+      }
+    });
+  }
+
+  removeBid(orderKey:string, bidKey:string){
+    this.afd.list(`/orders/${orderKey}/bids/`).remove(bidKey)
   }
 
   getUserList(){
@@ -91,6 +119,8 @@ export class FirebaseProvider {
       return false;
     }
   }
+
+  
 
 
 

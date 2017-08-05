@@ -1,5 +1,5 @@
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Order } from './../../models/order';
+import { Order, Bid } from './../../models/order';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { LoginPage } from './../login/login';
@@ -19,6 +19,8 @@ export class MarketPage {
 
   orderList: FirebaseListObservable<Order[]>;
   location: Location = new Location;
+
+  price:number;
   constructor(public navCtrl: NavController, public navParams: NavParams, private firebase: FirebaseProvider, private toast: ToastController, private auth: AngularFireAuth) {
     this.orderList = this.firebase.getOrderList();
     if (this.navParams.get('toast') === 1){
@@ -38,6 +40,23 @@ export class MarketPage {
     this.location.name = "hi";
     this.location.lat = 11;
     console.log(this.location.name);
+  }
+
+  bid(key:string){
+    const tBid =  {} as Bid;
+    this.auth.authState.subscribe( res => {
+    if (res && res.uid) {
+      console.log(res);
+        console.log('user is logged in');
+        tBid.name = res.displayName;
+        tBid.price = this.price;
+        tBid.uid = res.uid;
+        this.firebase.addBid(key, tBid);
+      } else {
+        console.log('user not logged in');
+        this.navCtrl.push('LoginPage');
+      }
+    });
   }
 
   navigateToOrderPage(){

@@ -6,6 +6,8 @@ export class Order {
     uid : string;
 
     bid : Bid;
+
+    hopePrice: number;
 }
 
 export class Bid {

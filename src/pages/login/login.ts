@@ -55,7 +55,7 @@ export class LoginPage {
     this.firebase.getProfile(<User>loginResponse.result).subscribe(profile => {
         console.log("profile.value");
         console.log(profile.email);
-        profile.email ? this.navCtrl.setRoot('HomePage') : this.navCtrl.setRoot('EditProfilePage'); 
+        profile.email ? this.navCtrl.pop() : this.navCtrl.setRoot('EditProfilePage'); 
       })
   }
 

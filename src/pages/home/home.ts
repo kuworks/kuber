@@ -30,7 +30,7 @@ export class HomePage {
     if (res && res.uid) {
       console.log(res);
         console.log('user is logged in');
-        this.navCtrl.push('page');
+        this.navCtrl.push(page);
       } else {
         console.log('user not logged in');
         this.navCtrl.push('LoginPage');
