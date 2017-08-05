@@ -51,6 +51,7 @@ export class OrderPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
+    
   }
 
   submitOrder(){

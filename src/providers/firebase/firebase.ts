@@ -55,6 +55,7 @@ export class FirebaseProvider {
       console.log(emptyBid);
       if (emptyBid.length == 0){
         this.afd.list(`/orders/${orderKey}/bids/`).push(bid)
+        this.afd.list('/bidList/').push(bid);
         console.log('bid');
       }
       else {
@@ -62,6 +63,35 @@ export class FirebaseProvider {
       }
     });
   }
+
+    getMyOrders(userKey: string){
+    const orderList = this.afd.list(`/orders/`);
+    const queryList = this.afd.list(`/orders/`, {
+      query:{
+        orderByChild: 'uid',
+        equalTo: userKey
+      }
+    });
+    return queryList;
+  }
+
+  getMyBid(userKey:string){
+    const bidList = this.afd.list('/bidList/');
+    const queryList = this.afd.list('/bidList/', {
+      query: {
+        orderByChild: 'uid',
+        equalTo: userKey
+      }
+    });
+    return queryList
+  }
+
+
+  getBid(orderKey:string){
+    const bidList = this.afd.list(`/orders/${orderKey}/`);
+    return bidList
+  }
+
 
   removeBid(orderKey:string, bidKey:string){
     this.afd.list(`/orders/${orderKey}/bids/`).remove(bidKey)
@@ -82,6 +112,7 @@ export class FirebaseProvider {
 
     return this.profileObject.take(1); //ends stream and just get one
   }
+
 
   setUserOnline(profile: Profile, token: string){
     const ref = database().ref(`online-users/${token}`)

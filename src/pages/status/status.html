@@ -21,7 +21,26 @@
 
 <h3>내주문</h3>
 
+  <ion-list>
+    <ion-item-sliding *ngFor="let order of orderList | async">
+      <ion-item item-left>
+        <h3>{{order.name}}</h3>
+        <h3>{{ order.content | json }}</h3>
+        <p>{{ order.location.address | json}}</p>
+      </ion-item>
+    </ion-item-sliding>>
+  </ion-list>
+
 <h3>내입찰</h3>
+ <ion-list>
+    <ion-item-sliding *ngFor="let bid of bidList | async">
+      <ion-item item-left>
+        <h3>{{bid.price}}</h3>
+        <h3>{{ bid.uid}}</h3>
+      </ion-item>
+    </ion-item-sliding>>
+  </ion-list>
+
 
 
 

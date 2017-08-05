@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FIREBASE_CONFIG } from './app.config';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ import { AuthProvider } from '../providers/auth/auth';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     IonicModule.forRoot(MyApp),
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
