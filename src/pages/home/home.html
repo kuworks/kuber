@@ -22,9 +22,10 @@
     </div>
     <div class="toast"></div>
   </div>
+  <input id="search" placeholder="검색어를 입력해 주세요" type="text">
 </ion-header>
 
-<ion-content id="home-content" padding>
+<ion-content id="home-ion-content" padding>
   <ion-tabs>
     <ion-tab [root]="tab1Root"></ion-tab>
   </ion-tabs>
@@ -35,3 +36,8 @@
   <img class="g" src="/assets/icon/g.svg">
   <img class="o" src="/assets/icon/o.svg">
 </div>
+
+<ion-footer id="end-point">
+    <div>홈으로</div>
+</ion-footer>
+

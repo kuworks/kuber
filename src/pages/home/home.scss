@@ -13,9 +13,10 @@ page-home {
             display: none;
         }
         #home-navbar{
+            background-color: white;
             padding-top: 14px;
             height: 56px;
-            border-bottom: 1px solid #F3F4F3;
+            border-bottom: 1px solid rgba(218, 217, 215, 0.7);
             .content{
                 .status, .market, .headhunt, .chat, .toggle-box, .toggle-button{
                     position: absolute;
@@ -28,7 +29,7 @@ page-home {
                     left: 50%;
                     transform: translateX(-50%);
                     width: 100px; height: 28px;
-                    border: 1.5px solid #F3F4F3;
+                    border: 1.5px solid rgba(218, 217, 215, 0.7);
                     border-radius: 14px;
                     padding-top: 2px;
                     .market{
@@ -68,14 +69,25 @@ page-home {
                 font-weight: 900;
             }
         }
+        #search{
+            display: none;
+            width: 100%; height: 56px;
+            padding: 13px 20px 13px 20px;
+            font-size: 16px;
+            font-family: 'Noto Sans';
+            color: #ff636c;;
+            ::placeholder{
+                color: #d5d5d5;
+            }
+        }
     }
     #home-ion-content{
         &>div>ion-tabs>div:nth-child(1){
             display: none;
         }
     }
-
     #kuber-loader{
+        display: none;
         height: 100%;
         width: 100%;
         background-color: #303134;
@@ -86,35 +98,52 @@ page-home {
             width: 91px;
         }
         .l{
-            left: 93px;
+            left: 118px;
             top: 19px;
         }
         .g{
             top: -2px;
-            left: 122px;
+            left: 147px;
             animation: loading1;
             animation-duration: 2.5s;            
         }
         .o{
             opacity: 0;
-            left: 93px;
+            left: 118px;
             top: 19px;
             animation: loading2;
             animation-duration: 2.5s;                        
+        }
+    }
+    #end-point{
+        display: none;
+        height: 100px;
+        background: linear-gradient(rgba(255,255,255,0),white);
+        div{
+            position: absolute;
+            top: calc(50% - 12px);
+            left: calc(50% - 40px);
+            width: 80px;
+            height: 24px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            background: #9a9a9a;
+            padding: 2px;
         }
     }
 }
 
 @keyframes loading1{
     0% {
-        left: 93px;
+        left: 118px;
         top: 19px;
     } 90% {
-        left: 93px;
+        left: 118px;
         top: 19px;
     } 100% {
         top: -2px;
-        left: 122px;
+        left: 147px;
     }
 }
 @keyframes loading2{

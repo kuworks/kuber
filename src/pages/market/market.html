@@ -13,40 +13,67 @@
 </ion-header>
 
 
-<ion-content padding>
-  <h3>입찰 현황!!</h3>
-  <ion-list>
-    <ion-item-sliding *ngFor="let order of orderList | async">
-      <ion-item item-left>
-        <h3>{{order.name}}</h3>
-        <h3>{{ order.content | json }}</h3>
-        <p>{{ order.location.address | json}}</p>
-        <button (click)="bid(order.$key)">입찰하기</button>
-        <ion-item>
-        <ion-input type="number" [(ngModel)]="price" placeholder="price" min=1000 step=500></ion-input>
-        </ion-item>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger" icon-only (click)="removeOrder(order.$key)"><ion-icon name="trash"></ion-icon></button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+<ion-content id="market-ion-content">
+  <h1 class="title">market.</h1>
+  <h1 class="sub-title">총 <span>1000건</span>의 거래가 성사되었습니다.</h1>   
+  <h1 class="sub-sub-title">Current Price</h1>
 
-
-
-  <input id="pac-input" class="controls" type="text"
-        placeholder="검색은 구글에서..">
-  <div id="map" style="width:100%;height:400px;" ng-bind-html="centerMarker"></div>
-  <div class="centerMarker"></div>
-  <div id="infowindow-content">
-      <span id="place-name"  class="title"></span><br>
-      Place ID <span id="place-id"></span><br>
-      <span id="place-address"></span>
+  <div class="bid-box">
+    <div class="list" *ngFor="let order of orderList | async">
+      <div></div><img src="/assets/icon/model1.png">
+      <h1>{{ order.location.address | json}}</h1>
+      <h1>3000 ￦</h1> 
+      <h1>{{ order.content | json }}</h1>        
     </div>
-  <p id="lat">lat</p>
-  <p id="lng">lng</p>
-  <p id = "address">현재주소</p>
-  <p id = "location">현재장소</p>
-  <button id="button" ion-button [disabled]="false" (click)="navigateToOrderPage()" >이 장소에서 받기</button>
+    <div class="list">
+      <div></div><img src="/assets/icon/model2.png">
+      <h1>고려대학교 법학도서관</h1>
+      <h1>2000 ￦</h1> 
+      <h1>카페C 아이스아메리카노 스페셜 블랜딩 한잔, 메가커피 아이스아메리카노요!</h1>  
+    </div>
+  </div>
+
+  <div class="order-box">
+    <div class="blur"></div>
+    <div class="list" list-num="1">
+      <div class="content">
+        <img class="check" src="/assets/icon/check.svg">
+        <h1 class="title">부탁하기</h1>
+        <h1 class="number">72<span> %</span></h1>
+        <h1 class="word">성공률</h1>
+      </div>
+    </div>
+    <div class="list" list-num="2">
+      <div class="content">
+        <img class="check" src="/assets/icon/check.svg">
+        <h1 class="title">들어주기</h1>
+        <h1 class="number">41<span> %</span></h1>
+        <h1 class="word">성공률</h1>
+      </div>
+    </div>
+  </div>
 
 </ion-content>
+
+<ion-footer>
+  <div id="modal"> 
+    <div id="map-box">
+      <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+      <div id="map" style="width:100%;height:400px;" ng-bind-html="centerMarker"></div>
+      <div class="centerMarker"><img src="/assets/icon/marker.svg" height=50></div>
+      <button class="button" (click)="navigateToOrderPage()" [disabled]="false">여기로 와주세요!</button>
+    </div>
+    <div id="price-box">
+      <p class="xxx" id="lat">lat</p>
+      <p class="xxx" id="lng">lng</p>
+      <p class="xxx" id = "address">현재주소</p>
+      <p class="xxx" id = "location">현재장소</p>
+      <h2>3000 원에서 흥정</h2>
+      <h1 (click)="this.navCtrl.push('StatusPage')">- 2000</h1>
+      <h1 (click)="this.navCtrl.push('StatusPage')">- 1000</h1>
+      <h1 (click)="this.navCtrl.push('StatusPage')">그대로</h1>
+      <h1 (click)="this.navCtrl.push('StatusPage')">+ 1000</h1>
+      <h1 (click)="this.navCtrl.push('StatusPage')">+ 2000</h1>
+    </div>
+  </div> 
+</ion-footer>
